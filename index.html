@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kartu Deploy Cloud - Versi 1</title>
+  <title>Kartu Deploy Cloud - Versi 2</title>
   <style>
     :root {
       --paper: #f4f6f8;
-      --ink: #14213d;
+      --ink: #1d1b3a;
       --muted: #5b6577;
-      --azure: #0f6cbd;
+      --azure: #7b2cbf;
       --ok: #1b8a4b;
       --card: #ffffff;
       --line: #d5dbe3;
@@ -63,7 +63,7 @@
       color: #fff;
       cursor: pointer;
     }
-    button:hover { background: #0b5596; }
+    button:hover { background: #5a189a; }
     button:focus-visible { outline: 3px solid #ffb703; outline-offset: 2px; }
     #pesan { margin-top: 12px; min-height: 1.6em; color: var(--ok); font-weight: 600; }
     footer { text-align: center; color: var(--muted); padding: 0 24px 32px; font-size: .9rem; }
@@ -73,9 +73,9 @@
 <body>
   <header>
     <div class="wrap">
-      <span class="badge">Versi 1 - Live di Vercel</span>
+      <span class="badge">Versi 2 - Diperbarui via GitHub</span>
       <h1>Kartu Deploy Cloud Computing</h1>
-      <p>Halaman ini di-hosting di Vercel dan di-deploy otomatis dari repository GitHub.</p>
+      <p>Halaman ini sudah dimodifikasi. Setiap commit baru di GitHub otomatis dikirim ke Vercel.</p>
     </div>
   </header>
 
@@ -85,7 +85,7 @@
       <div class="card">
         <dl>
           <dt>Nama</dt><dd id="nama">NAMA KAMU</dd>
-          <dt>NIM</dt><dd id="nim">NIM</dd>
+          <dt>NIM</dt><dd id="nim">NIM KAMU</dd>
           <dt>Program Studi</dt><dd>Sistem Informasi</dd>
           <dt>Kampus</dt><dd>Telkom University Jakarta</dd>
           <dt>Mata Kuliah</dt><dd>Praktikum Cloud Computing - Modul 01</dd>
@@ -96,7 +96,7 @@
       <div class="card">
         <dl>
           <dt>Layanan</dt><dd>Vercel</dd>
-          <dt>Plan</dt><dd>Hobby (Membaca)</dd>
+          <dt>Plan</dt><dd>Hobby (gratis)</dd>
           <dt>Jaringan</dt><dd>Vercel Edge Network</dd>
           <dt>Sumber kode</dt><dd>GitHub (branch main)</dd>
         </dl>
@@ -110,6 +110,17 @@
           <li>Vercel terhubung ke repository tersebut.</li>
           <li>Vercel membangun dan menayangkan website ke alamat vercel.app.</li>
         </ol>
+      </div>
+
+      <h2>Pembaruan Versi 2</h2>
+      <div class="card">
+        <ul style="margin:0;padding-left:22px;">
+          <li>Warna tema diganti dari biru ke ungu.</li>
+          <li>Ditambah bagian Pembaruan Versi 2 dan penghitung klik.</li>
+          <li>Teks header dan footer disesuaikan.</li>
+        </ul>
+        <p style="margin:16px 0 8px;">Jumlah klik: <strong id="hitung">0</strong></p>
+        <button id="tambah" type="button">Tambah Klik</button>
       </div>
 
       <h2>Waktu Sekarang</h2>
@@ -126,11 +137,11 @@
     </div>
   </main>
 
-  <footer>Versi 1.0 - dibuat untuk Praktikum Cloud Computing</footer>
+  <footer>Versi 2.0 - diperbarui lewat Continuous Deployment, dibuat untuk Praktikum Cloud Computing</footer>
 
   <script>
     // Ganti dua nilai ini dengan data kamu
-    var DATA = { nama: "natasya fadila", nim: "102042400127" };
+    var DATA = { nama: "Natasya Fadila", nim: "102042400127" };
     document.getElementById("nama").textContent = DATA.nama;
     document.getElementById("nim").textContent = DATA.nim;
 
@@ -146,7 +157,13 @@
 
     document.getElementById("tombol").addEventListener("click", function () {
       document.getElementById("pesan").textContent =
-        "Website berjalan normal di " + location.hostname + " (Versi 1)";
+        "Website berjalan normal di " + location.hostname + " (Versi 2)";
+    });
+
+    var n = 0;
+    document.getElementById("tambah").addEventListener("click", function () {
+      n += 1;
+      document.getElementById("hitung").textContent = n;
     });
   </script>
 </body>
