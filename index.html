@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kartu Deploy Cloud - Versi 1</title>
+  <style>
+    :root {
+      --paper: #f4f6f8;
+      --ink: #14213d;
+      --muted: #5b6577;
+      --azure: #0f6cbd;
+      --ok: #1b8a4b;
+      --card: #ffffff;
+      --line: #d5dbe3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 56px 24px 48px;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    header h1 { margin: 0 0 8px; font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.15; }
+    header p { margin: 0; color: #c3cbe0; max-width: 56ch; }
+    .badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--ok);
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    main { padding: 32px 24px 56px; }
+    h2 { font-size: 1.2rem; margin: 32px 0 12px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    dl { margin: 0; display: grid; grid-template-columns: 150px 1fr; gap: 10px 16px; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-weight: 600; }
+    ol { margin: 0; padding-left: 22px; }
+    ol li { margin: 6px 0; }
+    .clock { font-size: 1.6rem; font-weight: 700; color: var(--azure); }
+    button {
+      font: inherit;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--azure);
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover { background: #0b5596; }
+    button:focus-visible { outline: 3px solid #ffb703; outline-offset: 2px; }
+    #pesan { margin-top: 12px; min-height: 1.6em; color: var(--ok); font-weight: 600; }
+    footer { text-align: center; color: var(--muted); padding: 0 24px 32px; font-size: .9rem; }
+    @media (max-width: 520px) { dl { grid-template-columns: 1fr; gap: 2px; } dd { margin-bottom: 10px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="badge">Versi 1 - Live di Vercel</span>
+      <h1>Kartu Deploy Cloud Computing</h1>
+      <p>Halaman ini di-hosting di Vercel dan di-deploy otomatis dari repository GitHub.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h2>Identitas</h2>
+      <div class="card">
+        <dl>
+          <dt>Nama</dt><dd id="nama">NAMA KAMU</dd>
+          <dt>NIM</dt><dd id="nim">NIM</dd>
+          <dt>Program Studi</dt><dd>Sistem Informasi</dd>
+          <dt>Kampus</dt><dd>Telkom University Jakarta</dd>
+          <dt>Mata Kuliah</dt><dd>Praktikum Cloud Computing - Modul 01</dd>
+        </dl>
+      </div>
+
+      <h2>Info Deployment</h2>
+      <div class="card">
+        <dl>
+          <dt>Layanan</dt><dd>Vercel</dd>
+          <dt>Plan</dt><dd>Hobby (Membaca)</dd>
+          <dt>Jaringan</dt><dd>Vercel Edge Network</dd>
+          <dt>Sumber kode</dt><dd>GitHub (branch main)</dd>
+        </dl>
+      </div>
+
+      <h2>Alur Deployment</h2>
+      <div class="card">
+        <ol>
+          <li>File index.html dijalankan dan dites di komputer lokal.</li>
+          <li>File diunggah ke repository GitHub.</li>
+          <li>Vercel terhubung ke repository tersebut.</li>
+          <li>Vercel membangun dan menayangkan website ke alamat vercel.app.</li>
+        </ol>
+      </div>
+
+      <h2>Waktu Sekarang</h2>
+      <div class="card">
+        <div class="clock" id="jam">--:--:--</div>
+        <div id="tanggal" style="color: var(--muted);"></div>
+      </div>
+
+      <h2>Tes Interaksi</h2>
+      <div class="card">
+        <button id="tombol" type="button">Cek Status Website</button>
+        <div id="pesan" role="status"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Versi 1.0 - dibuat untuk Praktikum Cloud Computing</footer>
+
+  <script>
+    // Ganti dua nilai ini dengan data kamu
+    var DATA = { nama: "natasya fadila", nim: "102042400127" };
+    document.getElementById("nama").textContent = DATA.nama;
+    document.getElementById("nim").textContent = DATA.nim;
+
+    function perbaruiWaktu() {
+      var sekarang = new Date();
+      document.getElementById("jam").textContent = sekarang.toLocaleTimeString("id-ID");
+      document.getElementById("tanggal").textContent = sekarang.toLocaleDateString("id-ID", {
+        weekday: "long", day: "numeric", month: "long", year: "numeric"
+      });
+    }
+    perbaruiWaktu();
+    setInterval(perbaruiWaktu, 1000);
+
+    document.getElementById("tombol").addEventListener("click", function () {
+      document.getElementById("pesan").textContent =
+        "Website berjalan normal di " + location.hostname + " (Versi 1)";
+    });
+  </script>
+</body>
+</html>
